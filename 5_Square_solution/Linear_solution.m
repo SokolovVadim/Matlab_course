@@ -9,7 +9,7 @@ function root = Linear_solution(b, c)
             root(1, 2) = INFINIT
         else % a == 0, b == 0, c != 0
             root(1, 1) = NOSOL;
-            root(1, 1) = NOSOL;
+            root(1, 2) = NOSOL;
         end
     else
         root(1, 1) = -c / b;
