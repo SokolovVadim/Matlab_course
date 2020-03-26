@@ -33,3 +33,10 @@ for j = 1:m_size
     end
 end
 
+% Eigenvalues and eigenvectors (already normed)
+
+[V,D] = eig(matrix);
+disp('eigenvectors');
+disp(V);
+disp('eigenvalues');
+disp(D);
