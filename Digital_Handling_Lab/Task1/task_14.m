@@ -9,7 +9,12 @@ matrix = [1/16, 1/16, 1/16, 1/16, 1/8, 1/8, 1/8, 1/8;
             1/8, 1/8, 1/2, 1/2, 0, 0, 0, 0;
             1/2, 1/2, 0, 0, 0, 0, 1/8, 1/8;
             0, 0, 0, 0, 1/8, 1/8, 1/2, 1/2];
-        
+% easy to test matrix
+% matrix = [
+%         1, 2;
+%         2, 1
+% ];
+
 disp(matrix);
 
 m_size = size(matrix);
@@ -33,10 +38,11 @@ for j = 1:m_size
     end
 end
 
-% Eigenvalues and eigenvectors (already normed)
+% orthonormal basis for the range of matrix
+r = rank(matrix);
+disp(r);
+Q = orth(matrix);
+disp('orthonormal basis');
+disp(Q);
+disp(rank(Q)); % rank is equal to rank of matrix 
 
-[V,D] = eig(matrix);
-disp('eigenvectors');
-disp(V);
-disp('eigenvalues');
-disp(D);
