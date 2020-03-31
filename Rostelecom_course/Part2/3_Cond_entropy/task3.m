@@ -1,3 +1,3 @@
 load strings.mat;
-conditional_value_entropy(X, Y);
-%disp(ent);
+ent = conditional_value_entropy(X, Y, 'a');
+disp(ent);
