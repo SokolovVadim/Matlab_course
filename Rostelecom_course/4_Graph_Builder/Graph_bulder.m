@@ -2,7 +2,7 @@
 function y = Graph_builder(k, x)
     y = k.* log(x);
     
-    plot(x, y, 'LineWidth', 3);
+    plot(x, y, 'LineWidth', 2);
     axis([0.01 2 -5 2]);
     
     k_size = size(k);
@@ -12,8 +12,8 @@ function y = Graph_builder(k, x)
         str_arr(i) = ' - k = ' + str_arr(i);
     end
     disp(str_arr);
-    lgd = legend(str_arr, 'Location','southeast');
-    lgd.FontSize = 12;
+    lgd = legend(str_arr, 'Location','southeastoutside');
+    lgd.FontSize = 8;
     
     
     grid on;
