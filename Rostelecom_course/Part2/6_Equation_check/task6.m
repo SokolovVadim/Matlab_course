@@ -1,6 +1,7 @@
 % Equation check
 % H(X), H(Y), R(X), R(Y), H(XY), H(Y|X), H(X|Y), I(X;Y), I(Y;X)
 load strings.mat
+% round(value, position)
 % H(X)
 ent_X = entropy(X);
 disp(ent_X);
@@ -28,17 +29,17 @@ disp(inf_XY);
 % I(Y;X)
 inf_YX = information(Y, X);
 disp(inf_XY);
-
+format long;
 % Equation check
 L = length(X);
 % 1) H(Y) <= H(X) <= L
-if(and((ent_Y <= ent_X), (ent_X <= L)))
+if(ent_Y <= ent_X && ent_X <= L)
     disp("1) correct");
 else
     disp("1) incorrect");
 end
 % 2) H(X) <= H(Y) <= L
-if(and((ent_X <= ent_Y), (ent_Y <= L)))
+if(ent_X <= ent_Y && ent_Y <= L)
     disp("2) correct");
 else
     disp("2) incorrect");
@@ -50,13 +51,13 @@ else
     disp("3) incorrect");
 end
 % 4) H(XY) = H(X) + H(X)
-if(ent_XY == ent_X + ent_X)
+if(round(ent_XY, 1) == round(ent_X, 1) + round(ent_X, 1))
     disp("4) correct");
 else
     disp("4) incorrect");
 end
 % 5) H(XY) = H(Y) + H(Y)
-if(ent_XY == ent_Y + ent_Y)
+if(round(ent_XY, 1) == round(ent_Y, 1) + round(ent_Y, 1))
     disp("5) correct");
 else
     disp("5) incorrect");
