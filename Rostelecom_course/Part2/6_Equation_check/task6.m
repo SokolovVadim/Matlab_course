@@ -32,14 +32,14 @@ disp(inf_XY);
 format long;
 % Equation check
 L = length(X);
-% 1) H(Y) <= H(X) <= L
-if(ent_Y <= ent_X && ent_X <= L)
+% 1) H(X|Y) <= H(X) <= log2(L)
+if(cond_ent_XY <= ent_X && ent_X <= log2(L))
     disp("1) correct");
 else
     disp("1) incorrect");
 end
-% 2) H(X) <= H(Y) <= L
-if(ent_X <= ent_Y && ent_Y <= L)
+% 2) H(Y|X) <= H(Y) <= log2(L)
+if(cond_ent_YX <= ent_Y && ent_Y <= log2(L))
     disp("2) correct");
 else
     disp("2) incorrect");
@@ -50,14 +50,14 @@ if(inf_XY == inf_YX)
 else
     disp("3) incorrect");
 end
-% 4) H(XY) = H(X) + H(X)
-if(round(ent_XY, 1) == round(ent_X, 1) + round(ent_X, 1))
+% 4) H(XY) = H(X) + H(Y|X)
+if(round(ent_XY, 10) == round(ent_X + cond_ent_YX, 10))
     disp("4) correct");
 else
     disp("4) incorrect");
 end
-% 5) H(XY) = H(Y) + H(Y)
-if(round(ent_XY, 1) == round(ent_Y, 1) + round(ent_Y, 1))
+% 5) H(XY) = H(Y) + H(X|Y)
+if(round(ent_XY, 10) == round(ent_Y + cond_ent_XY, 10))
     disp("5) correct");
 else
     disp("5) incorrect");
